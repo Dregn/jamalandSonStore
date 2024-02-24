@@ -1,7 +1,6 @@
 import "./App.css";
 import logto from "./assests/J&S_BLACK.png";
-import bgImg from "./assests/bg-pic.jpg";
-import { useEffect, useState,useRef } from "react";
+import { useState,useRef } from "react";
 import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
@@ -14,11 +13,7 @@ export default function App() {
   const emailRef = useRef(null);
   const telRef = useRef(null);
 
-  const [formData, setFormData] = useState({
-    user_name: '',
-    email_id: '',
-    mobile_number: '',
-  });
+
 
   const addUserDetails = async (event) => {
 

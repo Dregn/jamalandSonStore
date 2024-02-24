@@ -1,6 +1,6 @@
 import "./App.css";
 import logto from "./assests/J&S_BLACK.png";
-import { useState,useRef } from "react";
+import { useRef } from "react";
 import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(

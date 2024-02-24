@@ -1,6 +1,7 @@
 import "./App.css";
 import logto from "./assests/J&S_BLACK.png";
-import { useRef } from "react";
+
+import {useRef } from "react";
 import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
@@ -54,7 +55,7 @@ export default function App() {
                       id="user_name"
                       placeholder="Full Name"
                       ref={nameRef}
-                      className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
+                      className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:text-neutral-200 dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                     />
                   </div>
                   <div className="flex flex-col mt-2">
@@ -67,7 +68,7 @@ export default function App() {
                       id="email_id"
                       placeholder="Email"
                       ref={emailRef} 
-                      className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
+                      className="w-100 mt-2 py-3 px-3 rounded-lg dark:text-neutral-200 bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                     />
                   </div>
 
@@ -81,7 +82,7 @@ export default function App() {
                       id="mobile_number"
                       ref={telRef} 
                       placeholder="Mobile Number"
-                      className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
+                      className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:text-neutral-200 dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                     />
                   </div>
 
@@ -107,7 +108,7 @@ export default function App() {
                             stroke-linejoin="round"
                             stroke-width="1.5"
                             viewBox="0 0 24 24"
-                            className="w-8 h-8 text-gray-500"
+                            className="w-8 h-8 text-gray-500 dark:text-neutral-200"
                           >
                             <path
                               stroke-linecap="round"
@@ -126,7 +127,7 @@ export default function App() {
                       </div>
                       <div class="ml-6 grow">
                         <p class="mb-2 font-bold dark:text-white">Location</p>
-                        <div className="text-md tracking-wide font-semibold w-40">
+                        <div className="text-md tracking-wide font-semibold w-40 dark:text-neutral-200">
                           G.B Road Palghat, Kerala, India 678014
                         </div>
                       </div>
@@ -143,7 +144,7 @@ export default function App() {
                             stroke-linejoin="round"
                             stroke-width="1.5"
                             viewBox="0 0 24 24"
-                            className="w-8 h-8 text-gray-500"
+                            className="w-8 h-8 text-gray-500 dark:text-neutral-200"
                           >
                             <path
                               stroke-linecap="round"
@@ -158,7 +159,7 @@ export default function App() {
                         <p class="mb-2 font-bold dark:text-white">
                           Mobile Number
                         </p>
-                        <div className="text-md tracking-wide font-semibold w-40">
+                        <div className="text-md tracking-wide font-semibold w-40 dark:text-neutral-200">
                           +91 97444 77141
                         </div>
                       </div>

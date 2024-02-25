@@ -1,7 +1,7 @@
 import "./App.css";
 import logto from "./assests/J&S_BLACK.png";
-import bgImg from "./assests/bg-pic.jpg";
-import { useEffect, useState,useRef } from "react";
+import SuccessModal from "./components/SuccessModal";
+import { useRef, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
@@ -13,30 +13,40 @@ export default function App() {
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const telRef = useRef(null);
+  let [showModal, setShowModal] = useState(false);
 
-  const [formData, setFormData] = useState({
-    user_name: '',
-    email_id: '',
-    mobile_number: '',
-  });
-
+  const resetModal = () => {
+    setShowModal(false);
+    // Additional reset logic if needed
+    nameRef.current.value = "";
+    emailRef.current.value = "";
+    telRef.current.value = "";
+  };
   const addUserDetails = async (event) => {
-
     event.preventDefault();
-    
-   
+
     const user_name = nameRef.current.value;
     const email_id = emailRef.current.value;
     const mobile_number = telRef.current.value;
 
-      let data = await supabase
-        .from("UserDetails")
-        .insert([{ user_name: user_name, email_id: email_id,mobile_number:mobile_number,location:"India" }])
-        .single();
-      console.log(data)
+    let data = await supabase
+      .from("UserDetails")
+      .insert([
+        {
+          user_name: user_name,
+          email_id: email_id,
+          mobile_number: mobile_number,
+          location: "India",
+        },
+      ])
+      .single();
+
+    console.log(data);
+    setShowModal(true);
   };
   return (
     <div class="container my-12 mx-auto md:px-6 bg-gradient-to-r from-neutral-300 to-stone-400">
+      <SuccessModal showModal={showModal} resetModal={resetModal} />
       <img
         src={logto}
         alt="Jamal Logo"
@@ -59,7 +69,7 @@ export default function App() {
                       id="user_name"
                       placeholder="Full Name"
                       ref={nameRef}
-                      className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
+                      className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:text-neutral-200 dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                     />
                   </div>
                   <div className="flex flex-col mt-2">
@@ -71,8 +81,8 @@ export default function App() {
                       name="email_id"
                       id="email_id"
                       placeholder="Email"
-                      ref={emailRef} 
-                      className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
+                      ref={emailRef}
+                      className="w-100 mt-2 py-3 px-3 rounded-lg dark:text-neutral-200 bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                     />
                   </div>
 
@@ -84,15 +94,15 @@ export default function App() {
                       type="mobile_number"
                       name="mobile_number"
                       id="mobile_number"
-                      ref={telRef} 
+                      ref={telRef}
                       placeholder="Mobile Number"
-                      className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
+                      className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:text-neutral-200 dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                     />
                   </div>
 
                   <button
-                  onClick={addUserDetails}
-                   type="submit"
+                    onClick={addUserDetails}
+                    type="submit"
                     className="md:w-32 bg-indigo-600 hover:bg-blue-dark text-white font-bold py-3 px-6 rounded-lg mt-3 hover:bg-indigo-500 transition ease-in-out duration-300"
                   >
                     Submit
@@ -112,7 +122,7 @@ export default function App() {
                             stroke-linejoin="round"
                             stroke-width="1.5"
                             viewBox="0 0 24 24"
-                            className="w-8 h-8 text-gray-500"
+                            className="w-8 h-8 text-gray-500 dark:text-neutral-200"
                           >
                             <path
                               stroke-linecap="round"
@@ -131,7 +141,7 @@ export default function App() {
                       </div>
                       <div class="ml-6 grow">
                         <p class="mb-2 font-bold dark:text-white">Location</p>
-                        <div className="text-md tracking-wide font-semibold w-40">
+                        <div className="text-md tracking-wide font-semibold w-40 dark:text-neutral-200">
                           G.B Road Palghat, Kerala, India 678014
                         </div>
                       </div>
@@ -148,7 +158,7 @@ export default function App() {
                             stroke-linejoin="round"
                             stroke-width="1.5"
                             viewBox="0 0 24 24"
-                            className="w-8 h-8 text-gray-500"
+                            className="w-8 h-8 text-gray-500 dark:text-neutral-200"
                           >
                             <path
                               stroke-linecap="round"
@@ -163,7 +173,7 @@ export default function App() {
                         <p class="mb-2 font-bold dark:text-white">
                           Mobile Number
                         </p>
-                        <div className="text-md tracking-wide font-semibold w-40">
+                        <div className="text-md tracking-wide font-semibold w-40 dark:text-neutral-200">
                           +91 97444 77141
                         </div>
                       </div>

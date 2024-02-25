@@ -35,6 +35,10 @@ export default function App() {
     window.open(mapUrl, '_blank');
   };
 
+  const handleCallClick = () => {
+    window.location.href = `tel:+919744477141`;
+  
+  };
 
   const addUserDetails = async (event) => {
     event.preventDefault();
@@ -55,7 +59,7 @@ export default function App() {
       ])
       .single();
 
-    console.log(data);
+ 
     setShowModal(true);
   };
   return (
@@ -153,7 +157,7 @@ export default function App() {
                           </svg>
                         </div>
                       </div>
-                      <div class="ml-6 grow">
+                      <div onClick={openStoreLocation} class="ml-6 grow">
                         <p class="mb-2 font-bold dark:text-white">Location</p>
                         <div className="text-md tracking-wide font-semibold w-40 dark:text-neutral-200">
                           G.B Road Palghat, Kerala, India 678014
@@ -164,7 +168,7 @@ export default function App() {
                   <div class="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:w-full lg:px-6 xl:w-6/12">
                     <div class="flex items-start">
                       <div class="shrink-0">
-                        <div href="tel:+919744477141" class="inline-block cursor-pointer rounded-md bg-primary-100 p-4 text-primary">
+                        <div onClick={handleCallClick} class="inline-block cursor-pointer rounded-md bg-primary-100 p-4 text-primary">
                           <svg
                             fill="none"
                             stroke="currentColor"
@@ -183,11 +187,11 @@ export default function App() {
                           </svg>
                         </div>
                       </div>
-                      <div class="ml-6 grow">
+                      <div onClick={handleCallClick} class="ml-6 grow">
                         <p class="mb-2 font-bold dark:text-white">
                           Mobile Number
                         </p>
-                        <div className="text-md tracking-wide font-semibold w-40 dark:text-neutral-200">
+                        <div  className="text-md tracking-wide font-semibold w-40 dark:text-neutral-200">
                           +91 97444 77141
                         </div>
                       </div>

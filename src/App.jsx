@@ -58,7 +58,7 @@ export default function App() {
         },
       ])
       .single();
-
+  console.log(data)
  
     setShowModal(true);
   };

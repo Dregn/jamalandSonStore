@@ -22,6 +22,20 @@ export default function App() {
     emailRef.current.value = "";
     telRef.current.value = "";
   };
+
+  const openStoreLocation = () => {
+    // Replace the coordinates with your store's latitude and longitude
+    const latitude =10.773500062158613;
+    const longitude = 76.65748505290128;
+
+    // Create a Google Maps URL with the specified coordinates
+    const mapUrl = `https://www.google.com/maps/place/${latitude},${longitude}`;
+
+    // Open the URL in a new tab or window
+    window.open(mapUrl, '_blank');
+  };
+
+
   const addUserDetails = async (event) => {
     event.preventDefault();
 
@@ -50,7 +64,7 @@ export default function App() {
       <img
         src={logto}
         alt="Jamal Logo"
-        className="w-[200px]  scale-125 mx-auto mb-4"
+        className="w-[150px]  scale-150 mx-auto mb-4"
       />
       <section class="mb-32">
         <div class="relative h-[300px] overflow-hidden bg-cover bg-[50%] bg-no-repeat bg-[url('https://mdbcdn.b-cdn.net/img/new/textures/full/284.jpg')]"></div>
@@ -114,7 +128,7 @@ export default function App() {
                   <div class="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:w-full lg:px-6 xl:w-6/12">
                     <div class="flex items-start">
                       <div class="shrink-0">
-                        <div class="inline-block rounded-md bg-primary-100 p-4 text-primary">
+                        <div onClick={openStoreLocation} class="inline-block cursor-pointer rounded-md bg-primary-100 p-4 text-primary">
                           <svg
                             fill="none"
                             stroke="currentColor"
@@ -150,7 +164,7 @@ export default function App() {
                   <div class="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:w-full lg:px-6 xl:w-6/12">
                     <div class="flex items-start">
                       <div class="shrink-0">
-                        <div class="inline-block rounded-md bg-primary-100 p-4 text-primary">
+                        <div href="tel:+919744477141" class="inline-block cursor-pointer rounded-md bg-primary-100 p-4 text-primary">
                           <svg
                             fill="none"
                             stroke="currentColor"

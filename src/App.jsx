@@ -77,13 +77,16 @@ export default function App() {
         style={{ transform: 'scale(2)' }}
       />
       <section class="mb-32">
-        <div class="relative h-[300px] overflow-hidden bg-cover bg-[50%] bg-no-repeat " style={{ backgroundImage: `url(${bg})`, backgroundPosition: '50%', backgroundRepeat: 'no-repeat' }}></div>
+        <div class="relative lg:h-[50vh] md:h-[35vh] h-[35vh] overflow-hidden bg-cover bg-[50%] bg-no-repeat " style={{ backgroundImage: `url(${bg})`, backgroundPosition: '50%', backgroundRepeat: 'no-repeat' }}></div>
         <div class="container px-6 md:px-12">
           <div class="block rounded-lg bg-[hsla(0,0%,100%,0.8)] px-6 py-12 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-[hsla(0,0%,5%,0.7)] dark:shadow-black/20 md:py-16 md:px-12 -mt-[100px] backdrop-blur-[30px]">
             <div class="flex flex-wrap">
               <div class="mb-12 w-full shrink-0 grow-0 basis-auto md:px-3 lg:mb-0 lg:w-5/12 lg:px-6">
                 <form className="p-6 flex flex-col justify-center">
                   <div className="flex flex-col">
+                  <h3
+                   style={{ color: 'rgb(137 92 53)'}}
+                   class="font-semibold text-center mb-8">Unlock Cool Offers: Reach Out!</h3>
                     <label for="user_name" className="hidden">
                       Full Name
                     </label>

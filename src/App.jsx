@@ -2,6 +2,7 @@ import "./App.css";
 import logto from "./assests/J&S_BLACK.png";
 import bg from "./assests/bg-pic.jpg";
 import SuccessModal from "./components/SuccessModal";
+import ErrorModal from "./components/ErrorModal";
 import { useRef, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 
@@ -15,6 +16,8 @@ export default function App() {
   const emailRef = useRef(null);
   const telRef = useRef(null);
   let [showModal, setShowModal] = useState(false);
+  let [showErrorModal, setErrorModal] = useState(false);
+  let [errorMessage, setErrorMessage] = useState();
 
   const resetModal = () => {
     setShowModal(false);
@@ -22,6 +25,12 @@ export default function App() {
     nameRef.current.value = "";
     emailRef.current.value = "";
     telRef.current.value = "";
+  };
+  const resetErrorModal = () => {
+    setErrorModal(false);
+    setErrorMessage(null)
+    // Additional reset logic if needed
+    
   };
 
   const openStoreLocation = () => {
@@ -35,7 +44,11 @@ export default function App() {
     // Open the URL in a new tab or window
     window.open(mapUrl, '_blank');
   };
-
+  function validateEmail(email) {
+    // Regular expression to validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
   const openWhatsApp=()=>{
     window.open(`https://wa.me/+919744477141`, '_blank');
   }
@@ -51,6 +64,30 @@ export default function App() {
     const user_name = nameRef.current.value;
     const email_id = emailRef.current.value;
     const mobile_number = telRef.current.value;
+
+    if (!user_name.trim()) {
+      // User name is empty or contains only whitespace
+      setErrorMessage( "Please enter your name.");
+      setErrorModal(true);
+      return;
+  } else if (!email_id.trim()) {
+      // Email is empty or contains only whitespace
+      setErrorMessage( "Please enter your email address.");
+      setErrorModal(true);
+      return;
+  } else if (!validateEmail(email_id)) {
+      // Invalid email format
+      setErrorMessage("Please enter a valid email address.");
+      setErrorModal(true);
+      return;
+  } else if (!mobile_number.trim()) {
+      // Mobile number is empty or contains only whitespace
+      setErrorMessage("Please enter your mobile number.");
+      setErrorModal(true);
+      return;
+  } else {
+      // All fields are filled, proceed with your logic
+  }
 
     let data = await supabase
       .from("UserDetails")
@@ -70,6 +107,7 @@ export default function App() {
   return (
     <div class="container my-12 mx-auto md:px-6 bg-gradient-to-r from-neutral-300 to-stone-400">
       <SuccessModal showModal={showModal} resetModal={resetModal} />
+      <ErrorModal showModal={showErrorModal} errorMessage={errorMessage} resetModal={resetErrorModal} />
       <img
         src={logto}
         alt="Jamal Logo"
@@ -86,7 +124,7 @@ export default function App() {
                   <div className="flex flex-col">
                   <h3
                    style={{ color: 'rgb(137 92 53)'}}
-                   class="font-semibold text-center mb-8">Unlock Cool Offers: Reach Out!</h3>
+                   class="font-semibold text-center mb-8">Please Fill the details To Get Cool Offers!!</h3>
                     <label for="user_name" className="hidden">
                       Full Name
                     </label>
